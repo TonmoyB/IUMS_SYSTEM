@@ -10,25 +10,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IUMS_SYSTEM">
         <activity
-            android:name=".SProfileEditInfoActivity"
+            android:name=".AdminPart.AdminProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".StudentProfileActivity"
+            android:name=".AdminPart.AdminLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentPart.SProfileEditInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentPart.StudentProfileActivity"
             android:exported="false" />
         <activity
             android:name=".AdminALogin"
             android:exported="false" />
         <activity
-            android:name=".StudentSignup"
+            android:name=".StudentPart.StudentSignup"
             android:exported="false" />
         <activity
-            android:name=".StudentLogin"
+            android:name=".StudentPart.StudentLogin"
             android:exported="false" />
         <activity
-            android:name=".AdminStudentActivity"
+            android:name=".misc.AdminStudentActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".misc.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

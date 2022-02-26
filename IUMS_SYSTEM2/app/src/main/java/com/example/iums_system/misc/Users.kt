@@ -1,4 +1,4 @@
-package com.example.iums_system
+package com.example.iums_system.misc
 
 import android.provider.ContactsContract
 

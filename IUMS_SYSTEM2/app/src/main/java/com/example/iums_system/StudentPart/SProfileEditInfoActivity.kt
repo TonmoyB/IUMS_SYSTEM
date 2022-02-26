@@ -1,7 +1,8 @@
-package com.example.iums_system
+package com.example.iums_system.StudentPart
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.iums_system.R
 
 class SProfileEditInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
