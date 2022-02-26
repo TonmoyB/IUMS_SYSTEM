@@ -18,24 +18,64 @@
             android:id="@+id/welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome Back"
+            android:text="PROFILE"
             android:textSize="26sp"
             android:textColor="@color/austGreenSlot3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
-            android:id="@+id/username"
+            android:id="@+id/sname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="26sp"
+            android:textSize="25sp"
             android:textColor="@color/black"
             android:layout_alignBottom="@+id/welcome"
             />
-
+        <TextView
+            android:id="@+id/sid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:layout_alignBottom="@+id/sname"
+            />
+        <TextView
+            android:id="@+id/smail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_alignBottom="@+id/sid"
+            />
+        <TextView
+            android:id="@+id/sdept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_alignBottom="@+id/smail"
+            />
+        <TextView
+            android:id="@+id/ssemester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_alignBottom="@+id/sdept"
+            />
+        <TextView
+            android:id="@+id/syear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_alignBottom="@+id/sdept"
+            />
 
     </LinearLayout>
 
