@@ -384,7 +384,7 @@ class StudentProfileActivity : AppCompatActivity() {
             database.child("users").child(tempID).child("sname").get().addOnSuccessListener {
                 Name.text = (it.value as CharSequence?)
                 //sample_student_name.text = (it.value as CharSequence?)
-                Toast.makeText(this,"ok",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Student Data Fetched",Toast.LENGTH_LONG).show()
             }
         }
         else
