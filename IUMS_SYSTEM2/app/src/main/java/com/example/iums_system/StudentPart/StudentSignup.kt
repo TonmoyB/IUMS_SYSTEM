@@ -401,6 +401,10 @@ class StudentSignup : AppCompatActivity() {
     private lateinit var Spass: String
     private lateinit var conSpass: String
     private lateinit var tempID: String
+    private lateinit var Sdept: String
+    private lateinit var Ssemester: String
+    private lateinit var Syear: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -446,7 +450,6 @@ class StudentSignup : AppCompatActivity() {
         student_confirm_password = findViewById(R.id.conpasswordEt) as EditText
 
         //animation init
-
 
     }
 
@@ -580,7 +583,7 @@ class StudentSignup : AppCompatActivity() {
     }
 
     private fun checkStudentCapacity() {
-        if( SID.get(2).toString()+SID.get(3).toString() == "01" )
+        if( SID.get(2).toString()+SID.get(3).toString() == "01" )//Spring
         {
             if(SID.get(4).toString()+SID.get(5).toString() == "01")//ARC
             {
@@ -638,7 +641,7 @@ class StudentSignup : AppCompatActivity() {
             }
 
         }
-        else if( SID.get(2).toString()+SID.get(3).toString() == "02" )
+        else if( SID.get(2).toString()+SID.get(3).toString() == "02" )//Fall
         {
             if(SID.get(4).toString()+SID.get(5).toString() == "01")//ARC
             {
@@ -719,12 +722,43 @@ class StudentSignup : AppCompatActivity() {
         SMail = student_mail.text.toString()
         Spass = student_password.text.toString()
         conSpass = student_confirm_password.text.toString()
-
+        Syear = "20"+SID.get(0).toString()+SID.get(1).toString()
+        if(SID.get(2).toString()+SID.get(3).toString() == "01"){
+            Ssemester = "Spring"
+        }
+        else{
+            Ssemester = "Fall"
+        }
+        if(SID.get(4).toString()+SID.get(5).toString() == "01"){
+            Sdept = "Architecture"
+        }
+        else if(SID.get(4).toString()+SID.get(5).toString() == "02"){
+            Sdept = "BBA"
+        }
+        else if(SID.get(4).toString()+SID.get(5).toString() == "03"){
+            Sdept = "Civil Engineering"
+        }
+        else if(SID.get(4).toString()+SID.get(5).toString() == "04"){
+            Sdept = "Computer Science and Engineering"
+        }
+        else if(SID.get(4).toString()+SID.get(5).toString() == "05"){
+            Sdept = "Electrical and Electronics Engineering"
+        }
+        else if(SID.get(4).toString()+SID.get(5).toString() == "06"){
+            Sdept = "Textile Engineering"
+        }
+        else if(SID.get(4).toString()+SID.get(5).toString() == "07"){
+            Sdept = "Industrial and Production Engineering"
+        }
+        else if(SID.get(4).toString()+SID.get(5).toString() == "08"){
+            Sdept = "Mechanical Engineering"
+        }
     }
+
     private fun signup(){
 
         Toast.makeText(this, "Sign Up Completed!", Toast.LENGTH_LONG).show()
-        user = users(Sname, SID, SMail, Spass)
+        user = users(Sname, SID, SMail, Spass, Syear, Ssemester, Sdept)
         database.child("users").child(tempID).setValue(user)
             .addOnSuccessListener {
                 var intent = Intent(this@StudentSignup, StudentLogin::class.java)
