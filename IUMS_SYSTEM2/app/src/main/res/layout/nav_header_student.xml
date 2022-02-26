@@ -13,7 +13,7 @@
         android:id="@+id/st_pic"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/pp"/>
+        android:src="@drawable/student"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         android:id="@+id/sample_student"
         android:paddingTop="8dp"
         android:textSize="20dp"
-        android:text="Sample Student"
+        android:text="Student Profile"
         android:textColor="@color/black"
         android:textStyle="bold"/>
 
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="190204000"/>
+        android:text="IUMS"/>
 
     <View
         android:layout_width="match_parent"
