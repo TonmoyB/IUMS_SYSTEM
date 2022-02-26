@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IUMS_SYSTEM">
         <activity
+            android:name=".StudentPart.StudentHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminPart.AdminProfileActivity"
             android:exported="false" />
         <activity

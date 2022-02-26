@@ -122,7 +122,8 @@ class StudentProfileActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.st_home -> {
-                    
+                    val intent = Intent( this@StudentProfileActivity, StudentHomeActivity::class.java)
+                    startActivity(intent)
                     Toast.makeText(applicationContext, "Clicked Home", Toast.LENGTH_SHORT).show()
                 }
                 R.id.st_profile -> Toast.makeText(applicationContext,"Clicked Profile",Toast.LENGTH_SHORT).show()
