@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "794785165965",
+    "project_id": "iums-system-5c7eb",
+    "storage_bucket": "iums-system-5c7eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794785165965:android:2bb73e4eb72644bcbfa8c4",
+        "android_client_info": {
+          "package_name": "com.example.iums_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794785165965-ngh9bu5nfh88ujnbo90bkqafvimg3ruq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj51VTg_0WlVV36xt62adrt23JtisNAMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "794785165965-ngh9bu5nfh88ujnbo90bkqafvimg3ruq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

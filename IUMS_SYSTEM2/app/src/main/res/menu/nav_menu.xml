@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/st_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="User Home"
+        />
+
+
+
+    <item android:title="Profile">
+
+        <menu>
+            <item
+                android:id="@+id/st_profile"
+                android:icon="@drawable/ic_baseline_person_pin_24"
+                android:title="Student Profile"
+                />
+            <item
+                android:id="@+id/st_edit"
+                android:icon="@drawable/ic_baseline_edit_24"
+                android:title="Edit Information"
+                />
+            <item
+                android:id="@+id/st_logout"
+                android:icon="@drawable/ic_baseline_login_24"
+                android:title="Log Out"
+                />
+
+        </menu>
+    </item>
+
+    <item android:title="Academic">
+        <menu>
+            <item
+                android:id="@+id/st_routine"
+                android:icon="@drawable/ic_baseline_wysiwyg_24"
+                android:title="Class Routine"
+                />
+
+            <item
+                android:id="@+id/st_notice"
+                android:icon="@drawable/ic_baseline_preview_24"
+                android:title="Notice Board"
+                />
+        </menu>
+    </item>
+
+
+    <item android:title="FAQ">
+        <menu>
+            <item
+                android:id="@+id/st_FAQ"
+                android:icon="@drawable/ic_baseline_support_agent_24"
+                android:title="FAQ"/>
+
+
+        </menu>
+    </item>
+
+
+
+
+</menu>

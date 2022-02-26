@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">IUMS_SYSTEM</string>
+    <!--for navigation kt-->
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <!--for Login/Signup part-->
+    <string name="no_account"><u>Not have account? Click here to <b>SignUp</b></u> </string>
+    <string name="yes_account"><u>Already have account? Click here to <b>Sign In</b></u></string>
+
+</resources>
