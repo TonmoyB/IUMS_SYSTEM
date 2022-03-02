@@ -38,7 +38,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
         android:text="(Department of Computer Science and Engineering)"
-        android:textColor="@color/austGreenSlot2"
+        android:textColor="@color/austGreenDark"
         android:textSize="17dp"
         android:textStyle="bold" />
 
