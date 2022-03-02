@@ -39,8 +39,6 @@ class StudentProfileActivity : AppCompatActivity() {
     private var currUser: FirebaseUser?=null
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_profile)

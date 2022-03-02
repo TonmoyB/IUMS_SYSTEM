@@ -29,6 +29,7 @@ class StudentUserProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_student_home)
 
         init()
+
         val curr = auth.currentUser
         if(curr !=null) {
             val tempID = curr.uid

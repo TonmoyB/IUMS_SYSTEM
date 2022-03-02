@@ -39,10 +39,11 @@
                 android:id="@+id/fnameEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="150dp"
                 android:background="@color/austGreenSlot4"
                 android:hint="Student Name"
                 android:inputType="text"
-                android:layout_marginTop="150dp"/>
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,10 +59,11 @@
                 android:id="@+id/idEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="213dp"
                 android:background="@color/austGreenSlot4"
                 android:hint="Student ID"
                 android:inputType="number"
-                android:layout_marginTop="213dp"/>
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,10 +79,11 @@
                 android:id="@+id/emailEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="276dp"
                 android:background="@color/austGreenSlot4"
                 android:hint="E-mail"
                 android:inputType="textEmailAddress"
-                android:layout_marginTop="276dp"/>
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,10 +101,11 @@
                 android:id="@+id/passwordEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="340dp"
                 android:background="@color/austGreenSlot4"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:layout_marginTop="340dp"/>
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,21 +123,24 @@
                 android:id="@+id/conpasswordEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="405dp"
                 android:background="@color/austGreenSlot4"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
-                android:layout_marginTop="405dp"/>
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
+                android:background="@color/austGreenSlot4"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/autoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/austGreenSlot4"
                     android:hint="Semester"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
