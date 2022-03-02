@@ -7,8 +7,9 @@
     android:layout_height="match_parent"
     android:background="@color/austGreenBackground"
     tools:context=".StudentPart.StudentProfileActivity">
-
+    //android
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
