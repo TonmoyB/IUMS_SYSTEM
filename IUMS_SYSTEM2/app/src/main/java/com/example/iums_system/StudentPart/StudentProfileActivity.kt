@@ -11,8 +11,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.iums_system.R
-import com.example.iums_system.misc.AdminStudentActivity
-import com.example.iums_system.misc.MainActivity
 import com.example.iums_system.misc.users
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -122,13 +120,19 @@ class StudentProfileActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.st_home -> {
-                    val intent = Intent( this@StudentProfileActivity, StudentHomeActivity::class.java)
-                    startActivity(intent)
                     Toast.makeText(applicationContext, "Clicked Home", Toast.LENGTH_SHORT).show()
                 }
-                R.id.st_profile -> Toast.makeText(applicationContext,"Clicked Profile",Toast.LENGTH_SHORT).show()
+                R.id.st_profile ->{
+                    val intent = Intent( this@StudentProfileActivity, StudentUserProfileActivity::class.java)
+                    startActivity(intent)
+                    Toast.makeText(applicationContext,"Clicked Profile",Toast.LENGTH_SHORT).show()
+                }
                 R.id.st_FAQ -> Toast.makeText(applicationContext,"Clicked FAQ",Toast.LENGTH_SHORT).show()
-                R.id.st_edit -> Toast.makeText(applicationContext,"Clicked Edit",Toast.LENGTH_SHORT).show()
+                R.id.st_edit ->{
+                    val intent = Intent( this@StudentProfileActivity, SProfileEditInfoActivity::class.java)
+                    startActivity(intent)
+                    Toast.makeText(applicationContext,"Clicked Edit",Toast.LENGTH_SHORT).show()
+                }
                 R.id.st_logout -> {
                     logout()
                 }

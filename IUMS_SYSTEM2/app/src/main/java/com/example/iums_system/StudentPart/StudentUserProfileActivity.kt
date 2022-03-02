@@ -13,7 +13,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class StudentHomeActivity : AppCompatActivity() {
+class StudentUserProfileActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private lateinit var NAME: TextView
@@ -22,8 +22,8 @@ class StudentHomeActivity : AppCompatActivity() {
     private lateinit var DEPT: TextView
     private lateinit var SEMESTER: TextView
     private lateinit var YEAR: TextView
-
     private lateinit var studentName: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_home)
