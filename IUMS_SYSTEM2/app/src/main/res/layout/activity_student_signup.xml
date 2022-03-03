@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/austGreenBackground">
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#3de086">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ConLay1"
+    <TextView
+        android:id="@+id/txt1"
+        style="@style/TextAppearance.MaterialComponents.Headline3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:text="Student SignUp"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/austGreenSlot1"
+        android:textStyle="bold"
 
-        <TextView
-            android:id="@+id/txt1"
-            style="@style/TextAppearance.MaterialComponents.Headline3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:text="Student SignUp"
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:layout_alignParentTop="true"
-            android:textColor="@color/austGreenSlot1"
-            android:textStyle="bold"
+        />
 
-            tools:ignore="MissingConstraints" />
+    <!--Sign Up button-->
+    <LinearLayout
+        android:id="@+id/llout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <!--Student Name-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/fnameTil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            tools:ignore="MissingConstraints">
+            android:paddingBottom="5dp">
 
             <EditText
                 android:id="@+id/fnameEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="150dp"
                 android:background="@color/austGreenSlot4"
                 android:hint="Student Name"
-                android:inputType="text"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,18 +52,15 @@
             android:id="@+id/idTil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            tools:ignore="MissingConstraints">
+            android:paddingBottom="5dp">
 
             <EditText
                 android:id="@+id/idEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="213dp"
                 android:background="@color/austGreenSlot4"
                 android:hint="Student ID"
-                android:inputType="number"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,18 +69,15 @@
             android:id="@+id/emailTil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            tools:ignore="MissingConstraints">
+            android:paddingBottom="5dp">
 
             <EditText
                 android:id="@+id/emailEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="276dp"
                 android:background="@color/austGreenSlot4"
                 android:hint="E-mail"
-                android:inputType="textEmailAddress"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,18 +88,15 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/idTil"
             android:paddingBottom="5dp"
-            app:passwordToggleEnabled="true"
-            tools:ignore="MissingConstraints">
+            app:passwordToggleEnabled="true">
 
             <EditText
                 android:id="@+id/passwordEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="340dp"
                 android:background="@color/austGreenSlot4"
                 android:hint="Password"
-                android:inputType="textPassword"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,68 +107,43 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/idTil"
             android:paddingBottom="5dp"
-            app:passwordToggleEnabled="true"
-            tools:ignore="MissingConstraints">
+            app:passwordToggleEnabled="true">
 
             <EditText
                 android:id="@+id/conpasswordEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="405dp"
                 android:background="@color/austGreenSlot4"
                 android:hint="Confirm Password"
-                android:inputType="textPassword"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:background="@color/austGreenSlot4"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/austGreenSlot4"
-                    android:hint="Semester"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!--Already have account?-->
-            <TextView
-                android:id="@+id/Account"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="@string/yes_account"
-                android:textColor="@color/austGreenSlot3" />
-
-            <!--Sign Up button-->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn1"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:background="@color/austGreenSlot3"
-                android:fontFamily="serif"
-                android:text="Sign Up"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                tools:ignore="MissingConstraints" />
-
-
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/Account"
+        android:background="@color/austGreenSlot3"
+        android:fontFamily="serif"
+        android:text="Sign Up"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
 
+    <!--Already have account?-->
+    <TextView
+        android:id="@+id/Account"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/yes_account"
+        android:textColor="@color/austGreenSlot3" />
 
-</ScrollView>
+</RelativeLayout>

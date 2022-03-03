@@ -5,10 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import com.example.iums_system.R
-import com.example.iums_system.databinding.ActivityMainBinding
-import com.example.iums_system.databinding.ActivityStudentSignupBinding
 import com.example.iums_system.misc.users
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -16,7 +17,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class StudentSignup : AppCompatActivity(), AdapterView.OnItemClickListener {
+class StudentSignup : AppCompatActivity() {
 
     private lateinit var user: users
 
@@ -43,49 +44,22 @@ class StudentSignup : AppCompatActivity(), AdapterView.OnItemClickListener {
     private lateinit var Sdept: String
     private lateinit var Ssemester: String
     private lateinit var Syear: String
-    private lateinit var Stsemester: String
 
-
-    private lateinit var binding: ActivityStudentSignupBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_signup)
 
         initialize()
-        bindF()
         //declare animation
         intro_animation()
 
-    }
-    //
-    private fun bindF() {
-        binding = ActivityStudentSignupBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        val semesters = resources.getStringArray(R.array.SemesterSelection)
-        val adapter = ArrayAdapter(
-            this,
-            R.layout.list_item_semester,
-            semesters
-        )
-
-        with(binding.autoCompleteTextView){
-            setAdapter(adapter)
-            onItemClickListener = this@StudentSignup
-        }
-
-    }
-
-    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
-        val item = parent?.getItemAtPosition(position).toString()
-        Toast.makeText(this, item, Toast.LENGTH_SHORT).show()
-        Stsemester = item
     }
 
     override fun onStart() {
         super.onStart()
 
-        //password er kahini ase!!!-----------------[done]------------------------------------------------
+        //password er kahini ase!!!-----------------------------------------------------------------
         button1.setOnClickListener {
             conditionCheck()
 
@@ -157,12 +131,47 @@ class StudentSignup : AppCompatActivity(), AdapterView.OnItemClickListener {
             flag =true
         }
         if (SID.length == 9 ) {
-
+            /*
+            if(SID.get(0)> '2')
+            {
+                Toast.makeText(this, "(0)>2", Toast.LENGTH_SHORT).show()
+                flag= true
+            }
+            if(SID.get(2) != '0')
+            {
+                Toast.makeText(this, "(2)!=0", Toast.LENGTH_SHORT).show()
+                flag= true
+            }
+            if(SID.get(3)> '2')
+            {
+                Toast.makeText(this, "(3)>2", Toast.LENGTH_SHORT).show()
+                flag= true
+            }
+            if(SID.get(4)!= '0')
+            {
+                Toast.makeText(this, "(4)!=0", Toast.LENGTH_SHORT).show()
+                flag= true
+            }
+            if(SID.get(5)== '9' || SID.get(5)=='0')
+            {
+                Toast.makeText(this, "(5)9/0", Toast.LENGTH_SHORT).show()
+                flag = true
+            }
+             */
             if(SID.get(0).toString()+SID.get(1).toString() > "22" )
             {
                 Toast.makeText(this, "Invalid student admission year", Toast.LENGTH_SHORT).show()
             }
+            /*if( SID.get(2).toString()+SID.get(3).toString() != "01" || SID.get(2).toString()+SID.get(3).toString() != "02" )
+            {
+                Toast.makeText(this, SID.get(2).toString()+SID.get(3).toString() +" is not a valid session", Toast.LENGTH_SHORT).show()
+            }
+            if( SID.get(4).toString()+SID.get(5).toString() != "01" || SID.get(4).toString()+SID.get(5).toString() != "02" || SID.get(4).toString()+SID.get(5).toString() != "03" || SID.get(4).toString()+SID.get(5).toString() != "04" || SID.get(4).toString()+SID.get(5).toString() != "05" || SID.get(4).toString()+SID.get(5).toString() != "06" || SID.get(4).toString()+SID.get(5).toString() != "07" || SID.get(4).toString()+SID.get(5).toString() != "08" )
+            {
+                Toast.makeText(this, SID.get(4).toString()+SID.get(5).toString() +" does not mean any valid department", Toast.LENGTH_SHORT).show()
+            }
 
+             */
             if( SID.get(2).toString()+SID.get(3).toString() > "02" )
             {
                 Toast.makeText(this, SID.get(2).toString()+SID.get(3).toString() +" is not a valid session", Toast.LENGTH_SHORT).show()
@@ -205,9 +214,12 @@ class StudentSignup : AppCompatActivity(), AdapterView.OnItemClickListener {
             flag = true
         }
 
-        if(flag == false) {
+        if(flag == false)
+        {
             authentication()
         }
+
+
     }
 
     private fun checkStudentCapacity() {
