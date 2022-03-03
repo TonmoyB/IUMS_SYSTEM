@@ -84,14 +84,7 @@
             android:textColor="@color/black"
             android:layout_alignBottom="@+id/sdept"
             />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:id="@+id/select"
-
-            />
+        
 
     </LinearLayout>
 
