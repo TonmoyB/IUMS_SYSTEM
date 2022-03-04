@@ -89,7 +89,9 @@ class StudentProfileActivity : AppCompatActivity() {
         //currUser = curr
         if(curr !=null)
         {
+
             UID = curr.uid
+            
         }
         database.child("users").child(UID).child("sname").get().addOnSuccessListener {
             Name.text = it.value as CharSequence?
