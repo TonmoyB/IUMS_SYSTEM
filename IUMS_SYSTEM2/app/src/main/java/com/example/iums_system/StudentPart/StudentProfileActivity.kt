@@ -28,16 +28,13 @@ class StudentProfileActivity : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
+    private lateinit var UID: String
 
+    private lateinit var stdID: String
     private lateinit var Name: TextView
-    private lateinit var sample_student_name: TextView
-
-    private lateinit var studentName: String
-
     private lateinit var navView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
     private var currUser: FirebaseUser?=null
-
 
 
 
@@ -47,7 +44,6 @@ class StudentProfileActivity : AppCompatActivity() {
 
         init()
         drawer()
-
 
     }
 
@@ -87,25 +83,23 @@ class StudentProfileActivity : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawerLayout)
         currUser = auth.currentUser
     }
+
     private fun updateData(){
         val curr = auth.currentUser
         //currUser = curr
         if(curr !=null)
         {
-            val tempID = curr.uid
+            UID = curr.uid
+        }
+        database.child("users").child(UID).child("sname").get().addOnSuccessListener {
+            Name.text = it.value as CharSequence?
+            //sample_student_name.text = (it.value as CharSequence?)
+            Toast.makeText(this,"Student Data Fetched",Toast.LENGTH_LONG).show()
+        }
+        database.child("users").child(UID).child("sid").get().addOnSuccessListener {
+            stdID = (it.value as CharSequence?).toString()
+        }
 
-            database.child("users").child(tempID).child("sname").get().addOnSuccessListener {
-                Name.text = (it.value as CharSequence?)
-                //sample_student_name.text = (it.value as CharSequence?)
-                Toast.makeText(this,"Student Data Fetched",Toast.LENGTH_LONG).show()
-            }
-        }
-        else
-        {
-            Toast.makeText(this,"not ok",Toast.LENGTH_LONG).show()
-            val intent = Intent( this@StudentProfileActivity, StudentLogin::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun drawer(){
@@ -126,6 +120,7 @@ class StudentProfileActivity : AppCompatActivity() {
                 }
                 R.id.st_profile ->{
                     val intent = Intent( this@StudentProfileActivity, StudentUserProfileActivity::class.java)
+                    intent.putExtra("message", stdID)
                     startActivity(intent)
                     Toast.makeText(applicationContext,"Clicked Profile",Toast.LENGTH_SHORT).show()
                 }
