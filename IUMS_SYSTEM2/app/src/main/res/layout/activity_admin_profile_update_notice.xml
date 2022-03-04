@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/austGreenBackground"
+    tools:context=".AdminPart.AdminProfileUpdateNoticeActivity">
+
+
+        <RelativeLayout
+            android:id="@+id/toolbarRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/austGreenDark">
+
+                <ImageButton
+                    android:id="@+id/bckbtn"
+                    android:layout_width="50dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:background="@android:color/transparent"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_back_24" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="Notice Board"
+                    android:textColor="@color/white"
+                    android:textSize="35dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title"
+                    android:layout_centerHorizontal="true"
+                    android:text="[Update]"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pdfTitleTil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="225dp"
+            app:hintEnabled="false">
+
+            <EditText
+                android:id="@+id/pdfTitleEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="PDF Name"
+                android:layout_margin="5dp"
+                android:textColor="@color/black"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pdfDescripTil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pdfTitleTil"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/pdfDescripEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:hint="PDF Description"
+                    android:inputType="textImeMultiLine|textCapSentences"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/pdfDescripTil"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="100dp">
+
+                <ImageButton
+                    android:id="@+id/btn1"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/ic_attachment_24" />
+
+                <ImageButton
+                    android:id="@+id/btn2"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/ic_upload_24" />
+
+
+        </LinearLayout>
+
+
+
+
+</RelativeLayout>

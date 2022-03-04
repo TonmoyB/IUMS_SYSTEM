@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:title="Profile">
+
+        <menu>
+
+            <item
+                android:id="@+id/ad_logout"
+                android:icon="@drawable/ic_baseline_login_24"
+                android:title="Log Out"
+                />
+
+        </menu>
+    </item>
+
+    <item android:title="Academic">
+        <menu>
+            <item
+                android:id="@+id/ad_routine"
+                android:icon="@drawable/ic_baseline_wysiwyg_24"
+                android:title="Class Routine">
+
+            </item>
+            <item
+                android:id="@+id/ad_notice_view"
+                android:icon="@drawable/ic_baseline_preview_24"
+                android:title="Notice Board"/>
+
+        </menu>
+
+
+    </item>
+
+
+    <item android:title="FAQ">
+        <menu>
+            <item
+                android:id="@+id/ad_FAQ"
+                android:icon="@drawable/ic_baseline_support_agent_24"
+                android:title="FAQ"/>
+
+
+        </menu>
+    </item>
+
+
+
+
+</menu>
