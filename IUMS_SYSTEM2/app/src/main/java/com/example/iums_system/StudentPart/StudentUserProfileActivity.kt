@@ -1,9 +1,20 @@
 package com.example.iums_system.StudentPart
 
+import android.app.ProgressDialog
+import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.example.iums_system.R
+import com.example.iums_system.databinding.ActivitySprofileEditInfoBinding
+import com.example.iums_system.databinding.ActivityStudentUserProfileBinding
+import com.example.iums_system.misc.AdminStudentActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -12,23 +23,39 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
+import com.squareup.picasso.Picasso
+import java.io.File
+import java.net.URI
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.zip.Inflater
 
 class StudentUserProfileActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
-    private lateinit var NAME: TextView
-    private lateinit var ID: TextView
-    private lateinit var MAIL: TextView
-    private lateinit var DEPT: TextView
-    private lateinit var SEMESTER: TextView
-    private lateinit var YEAR: TextView
-    private lateinit var studentName: String
+
+    private lateinit var binding: ActivityStudentUserProfileBinding
+    private lateinit var fname: String
+    private lateinit var extraID: String
+    private lateinit var id: TextView
+
+    private var firebaseStorage: FirebaseStorage?=null
+    private var storageReference: StorageReference?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_student_home)
+        setContentView(R.layout.activity_student_user_profile)
 
-        init()
+        database = Firebase.database.reference
+        auth = Firebase.auth
+        binding = ActivityStudentUserProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        id = findViewById(R.id.sid)
+
+        //----Data_Show---
         val curr = auth.currentUser
         if(curr !=null) {
             val tempID = curr.uid
@@ -42,63 +69,77 @@ class StudentUserProfileActivity : AppCompatActivity() {
                         when (key) {
                             "sname" -> {
                                 temp = ""
-                                temp += NAME.text as String
+                                temp += binding.sname.text.toString()
                                 temp += data.toString()
-                                NAME.text = temp
+                                binding.sname.text = temp
                             }
                             "sid" -> {
                                 temp = ""
-                                temp += ID.text as String
+                                temp += id.text as String
                                 temp += data.toString()
-                                ID.text = temp
+                                id.text = temp
                             }
                             "smail" -> {
                                 temp = ""
-                                temp += MAIL.text as String
+                                temp += binding.smail.text.toString()
                                 temp += data.toString()
-                                temp += " "
-                                MAIL.text = temp
+                                binding.smail.text = temp
                             }
                             "sdept" -> {
                                 temp = ""
-                                temp += DEPT.text as String
+                                temp += binding.sdept.text.toString()
                                 temp += data.toString()
-                                DEPT.text = temp
+                                binding.sdept.text = temp
                             }
                             "ssemester" -> {
                                 temp = ""
-                                temp += SEMESTER.text as String
+                                temp += binding.ssemester.text.toString()
                                 temp += data.toString()
-                                SEMESTER.text = temp
+                                binding.ssemester.text = temp
                             }
                             "syear" -> {
                                 temp = ""
-                                temp += YEAR.text as String
+                                temp += binding.syear.text.toString()
                                 temp += data.toString()
-                                YEAR.text = temp
+                                binding.syear.text = temp
                             }
                         }
                     }
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
-
                 }
             })
         }
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setMessage("Fetching...")
+        progressDialog.setCancelable(false)
+        progressDialog.show()
+
+        storageReference = Firebase.storage.reference
+
+        val fname = intent.getStringExtra("message")
+        Toast.makeText(this, fname, Toast.LENGTH_LONG).show()
+        storageReference!!.child("images/${fname}"!!)
+            .downloadUrl.addOnSuccessListener {uri->
+                if(progressDialog.isShowing)
+                    progressDialog.dismiss()
+
+                Picasso.get().load(uri).into(binding.spic)
+                Toast.makeText(this, "Image Fetched Successfully!", Toast.LENGTH_SHORT).show()
+
+            }.addOnFailureListener{
+
+                if(progressDialog.isShowing)
+                    progressDialog.dismiss()
+
+                Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show()
+            }
+
     }
 
-    private fun init(){
-        //database init
-        database = Firebase.database.reference
-        auth = Firebase.auth
-
-        NAME = findViewById(R.id.sname)
-        ID = findViewById(R.id.sid)
-        MAIL = findViewById(R.id.smail)
-        DEPT = findViewById(R.id.sdept)
-        SEMESTER = findViewById(R.id.ssemester)
-        YEAR = findViewById(R.id.syear)
+    override fun onStart() {
+        super.onStart()
+        Toast.makeText(this, id.text.toString(), Toast.LENGTH_LONG).show()
     }
-
 }

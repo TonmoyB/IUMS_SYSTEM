@@ -1,11 +1,16 @@
 package com.example.iums_system.StudentPart
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.example.iums_system.R
+import com.example.iums_system.databinding.ActivitySprofileEditInfoBinding
+import com.example.iums_system.databinding.ActivityStudentUserProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -17,6 +22,9 @@ class SProfileEditInfoActivity : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var binding: ActivitySprofileEditInfoBinding
+    private lateinit var img: Uri
 
     private lateinit var NAME: EditText
     private lateinit var ID: EditText
@@ -37,6 +45,9 @@ class SProfileEditInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sprofile_edit_info)
 
+        binding = ActivitySprofileEditInfoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         init()
 
     }
@@ -44,10 +55,17 @@ class SProfileEditInfoActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         btn.setOnClickListener(){
-            getData()
 
+            getData()
             update()
+
         }
+        //---Pic_Select+Up---
+        binding.select.setOnClickListener{
+            val intent = Intent( this, ImageUpload::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun getData() {
@@ -72,8 +90,7 @@ class SProfileEditInfoActivity : AppCompatActivity() {
     private fun update(){
         database = FirebaseDatabase.getInstance().getReference("users")
         val curr = auth.currentUser
-        if(curr!=null)
-        {
+        if(curr!=null) {
             val tempID = curr.uid
             val user = mapOf<String, String>(
                 "sname" to stName,
@@ -82,7 +99,7 @@ class SProfileEditInfoActivity : AppCompatActivity() {
                 "smail" to stMail
             )
             database.child(tempID).updateChildren(user).addOnSuccessListener {
-
+                Toast.makeText(this, "Updated!", Toast.LENGTH_SHORT).show()
             }
         }
     }
