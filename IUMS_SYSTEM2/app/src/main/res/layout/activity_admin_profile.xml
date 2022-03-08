@@ -16,10 +16,13 @@
 
         <TextView
             android:id="@+id/welcomeAD"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome Back"
-            android:textSize="26sp"
+            android:gravity="center"
+            android:text="Welcome to IUMS"
+            android:textSize="35sp"
+            android:background="@color/austGreenDark"
+            android:textStyle="bold"
             android:textColor="@color/austGreenSlot3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,10 +32,13 @@
 
         <TextView
             android:id="@+id/usernameAD"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_alignBottom="@+id/welcome"
-            android:textColor="@color/black"
+            android:text="Admin"
+            android:textStyle="italic"
+            android:textColor="@color/austGreenDark"
             android:textSize="26sp" />
 
 
@@ -46,6 +52,6 @@
         android:id="@+id/nav_viewAD"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:background="@color/austGreenSlot4"/>
+        android:background="@color/white"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

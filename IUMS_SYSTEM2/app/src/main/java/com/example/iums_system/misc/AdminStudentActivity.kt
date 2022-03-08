@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import com.example.iums_system.AdminPart.AdminLoginActivity
 import com.example.iums_system.R
@@ -26,6 +27,12 @@ class AdminStudentActivity : AppCompatActivity() {
 
         initialize()
         intro_animation()
+
+        supportActionBar?.hide()
+        var bckbtn = findViewById<ImageButton>(R.id.bckbtn)
+         bckbtn.setOnClickListener {
+            onBackPressed()
+        }
 
     }
 

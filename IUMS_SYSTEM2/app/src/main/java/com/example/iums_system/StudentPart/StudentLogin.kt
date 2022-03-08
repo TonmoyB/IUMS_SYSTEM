@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.iums_system.AdminPart.AdminLoginActivity
 import com.example.iums_system.AdminPart.AdminProfileActivity
 import com.example.iums_system.R
@@ -43,6 +40,12 @@ class StudentLogin : AppCompatActivity() {
 
         initialize()
         intro_animation()
+
+        supportActionBar?.hide()
+        var btn = findViewById<ImageButton>(R.id.bckbtn)
+        btn.setOnClickListener {
+            onBackPressed()
+        }
 
     }
 
@@ -104,6 +107,7 @@ class StudentLogin : AppCompatActivity() {
                 if(task.isSuccessful){
                     //code for logging in user
                     val intent = Intent( this@StudentLogin, StudentProfileActivity::class.java)
+                    intent.putExtra("studentID",studentID)
                     startActivity(intent)
                 }
                 else{

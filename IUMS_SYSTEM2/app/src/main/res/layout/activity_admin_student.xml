@@ -8,6 +8,34 @@
     android:layout_height="match_parent"
     android:background="@color/austGreenBackground">
 
+    <LinearLayout
+        android:id="@+id/TopRl"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/austGreenDark"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/bckbtn"
+            android:layout_gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_back_24"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/NoticeBoard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            android:gravity="center|left"
+            android:text="IUMS_SYSTEM"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
+
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/img1"
         android:layout_width="match_parent"
@@ -24,39 +52,56 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center_horizontal"
         android:text="Select Your Identity!"
-        android:textColor="@color/austGreenSlot1"
-        android:textSize="40dp"
+        android:background="@color/austGreenDark"
+        android:textColor="@color/austGreenSlot3"
+        android:textSize="42dp"
         android:textStyle="bold"
         />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn1"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/txt1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:background="@color/austGreenSlot3"
-        android:fontFamily="serif"
-        android:text="ADMIN"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignTop="@id/txt1"
+        android:layout_marginTop="80dp">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn2"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/btn1"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        android:background="@color/austGreenSlot3"
-        android:text="STUDENT"
-        android:textSize="25dp"
-        android:textAlignment="center"
-        android:fontFamily="serif"
-        android:textStyle="bold"
-        />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn1"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
+            android:background="@color/austGreenSlot3"
+            android:fontFamily="serif"
+            android:text="ADMIN"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:drawableTop="@drawable/custom_icon_ad"
+            android:layout_marginRight="40dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn2"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
+            android:background="@color/austGreenSlot3"
+            android:text="STUDENT"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:drawableTop="@drawable/custom_icon_st"
+            />
+
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>
 

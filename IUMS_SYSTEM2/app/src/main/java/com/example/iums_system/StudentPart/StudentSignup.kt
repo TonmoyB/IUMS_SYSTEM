@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.iums_system.R
 import com.example.iums_system.misc.users
 import com.google.firebase.auth.FirebaseAuth
@@ -31,6 +28,7 @@ class StudentSignup : AppCompatActivity() {
     private lateinit var student_mail: EditText
     private lateinit var student_password: EditText
     private lateinit var student_confirm_password: EditText
+    private lateinit var spinner: Spinner
 
     private lateinit var button1: Button
     private lateinit var jumpSignin: TextView
@@ -44,6 +42,7 @@ class StudentSignup : AppCompatActivity() {
     private lateinit var Sdept: String
     private lateinit var Ssemester: String
     private lateinit var Syear: String
+    private lateinit var sYearSemester: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +53,23 @@ class StudentSignup : AppCompatActivity() {
         //declare animation
         intro_animation()
 
+        spinnerFunction()
+
+        supportActionBar?.hide()
+        var btn = findViewById<ImageButton>(R.id.bckbtn)
+        btn.setOnClickListener {
+            onBackPressed()
+        }
+
+    }
+
+    private fun spinnerFunction() {
+        val adapter = ArrayAdapter.createFromResource(this,
+            R.array.year_semester, android.R.layout.simple_spinner_item)
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // Apply the adapter to the spinner
+        spinner.adapter = adapter
     }
 
     override fun onStart() {
@@ -62,6 +78,7 @@ class StudentSignup : AppCompatActivity() {
         //password er kahini ase!!!-----------------------------------------------------------------
         button1.setOnClickListener {
             conditionCheck()
+            Toast.makeText(this, "Spinner 1 " + spinner.selectedItem.toString() , Toast.LENGTH_LONG).show()
 
         }
         val acc = findViewById(R.id.Account) as TextView
@@ -88,7 +105,7 @@ class StudentSignup : AppCompatActivity() {
         student_mail = findViewById(R.id.emailEt) as EditText
         student_password = findViewById(R.id.passwordEt) as EditText
         student_confirm_password = findViewById(R.id.conpasswordEt) as EditText
-
+        spinner = findViewById(R.id.spinner)
         //animation init
 
     }
@@ -130,6 +147,53 @@ class StudentSignup : AppCompatActivity() {
             Toast.makeText(this, "Invalid Student ID Length", Toast.LENGTH_SHORT).show()
             flag =true
         }
+
+        studentIDcheck9()
+
+        if (SMail.equals("")) {
+            Toast.makeText(this, "Insert your mail address", Toast.LENGTH_SHORT).show()
+            flag = true
+        }
+        else if (!SMail.endsWith("@aust.edu")) {
+            Toast.makeText(this, "Insert your educational mail address", Toast.LENGTH_SHORT).show()
+            flag = true
+        }
+        else if (!SMail.equals(SID + "@aust.edu")) {
+            Toast.makeText(this, "Institutional gmail ID does not match with your ID", Toast.LENGTH_SHORT).show()
+            flag = true
+        }
+        else if (conSpass.equals("")) {
+            Toast.makeText(this, "Confirm your password!", Toast.LENGTH_SHORT).show()
+            flag = true
+        }
+        else if (!Spass.equals(conSpass)) {
+            Toast.makeText(this, "Your Password does not match!", Toast.LENGTH_SHORT).show()
+            flag = true
+        }
+        else if(spinner.selectedItem.toString().equals("Year/Semester"))
+        {
+            Toast.makeText(this, "Select youor Current Year & Semester", Toast.LENGTH_SHORT).show()
+            flag = true
+        }
+        else if(spinner.selectedItem.toString().equals("5/1 [ARCH only]") || spinner.selectedItem.toString().equals("5/2 [ARCH only]") )
+        {
+            if(SID.get(4).toString()+SID.get(5).toString() != "01") {
+                Toast.makeText(this, "Choose correct Year/Semester", Toast.LENGTH_SHORT).show()
+            }
+            flag = true
+        }
+
+
+
+        if(flag == false)
+        {
+            authentication()
+        }
+
+
+    }
+
+    private fun studentIDcheck9() {
         if (SID.length == 9 ) {
             /*
             if(SID.get(0)> '2')
@@ -193,32 +257,6 @@ class StudentSignup : AppCompatActivity() {
 
 
         }
-        if (SMail.equals("")) {
-            Toast.makeText(this, "Insert your mail address", Toast.LENGTH_SHORT).show()
-            flag = true
-        }
-        else if (!SMail.endsWith("@aust.edu")) {
-            Toast.makeText(this, "Insert your educational mail address", Toast.LENGTH_SHORT).show()
-            flag = true
-        }
-        else if (!SMail.equals(SID + "@aust.edu")) {
-            Toast.makeText(this, "Institutional gmail ID does not match with your ID", Toast.LENGTH_SHORT).show()
-            flag = true
-        }
-        if (conSpass.equals("")) {
-            Toast.makeText(this, "Confirm your password!", Toast.LENGTH_SHORT).show()
-            flag = true
-        }
-        if (!Spass.equals(conSpass)) {
-            Toast.makeText(this, "Your Password does not match!", Toast.LENGTH_SHORT).show()
-            flag = true
-        }
-
-        if(flag == false)
-        {
-            authentication()
-        }
-
 
     }
 
@@ -400,7 +438,8 @@ class StudentSignup : AppCompatActivity() {
     private fun signup(){
 
         Toast.makeText(this, "Sign Up Completed!", Toast.LENGTH_LONG).show()
-        user = users(Sname, SID, SMail, Spass, Syear, Ssemester, Sdept)
+        sYearSemester = spinner.selectedItem.toString()
+        user = users(Sname, SID, SMail, Spass, Syear, Ssemester, Sdept, sYearSemester)
         database.child("users").child(tempID).setValue(user)
             .addOnSuccessListener {
                 var intent = Intent(this@StudentSignup, StudentLogin::class.java)

@@ -2,6 +2,7 @@ package com.example.iums_system.AdminPart
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
@@ -73,9 +74,16 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         holder.morebtn.setOnClickListener{
             moreOptionsDialog(model,holder)
         }
-
-
         //lets create an application class that will contain the functions that will be used multiple places
+
+
+        //handle item click, open pdfDetail activity
+        holder.itemView.setOnClickListener {
+            //intent with bookId
+            val intent = Intent(context,AdminProfileNoticeDetailActivity::class.java)
+            intent.putExtra("bookId",pdfId)
+            context.startActivity(intent)
+        }
 
     }
 

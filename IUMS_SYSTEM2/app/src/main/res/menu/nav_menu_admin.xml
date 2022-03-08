@@ -37,9 +37,9 @@
     <item android:title="FAQ">
         <menu>
             <item
-                android:id="@+id/ad_FAQ"
+                android:id="@+id/aboutUS"
                 android:icon="@drawable/ic_baseline_support_agent_24"
-                android:title="FAQ"/>
+                android:title="About Us"/>
 
 
         </menu>

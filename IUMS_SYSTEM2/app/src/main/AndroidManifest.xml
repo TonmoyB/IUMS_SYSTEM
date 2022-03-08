@@ -11,17 +11,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IUMS_SYSTEM">
         <activity
-            android:name=".AdminPart.AdminProfileNoticeDetailActivity"
+            android:name=".misc.AboutUsAcitivity"
             android:exported="false" />
+        <activity
+            android:name=".StudentPart.StudentProfileNoticeBoard"
+            android:exported="false"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".StudentPart.StudentProfileViewNoticeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".StudentPart.UploadImage"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPart.AdminProfileNoticeDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".AdminPart.AdminProfileViewNoticeActivity"
-
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".AdminPart.AdminProfileUpdateNoticeActivity"
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".StudentPart.StudentUserProfileActivity"
             android:exported="false" />
@@ -37,7 +51,6 @@
         <activity
             android:name=".StudentPart.StudentProfileActivity"
             android:exported="false" />
-
         <activity
             android:name=".StudentPart.StudentSignup"
             android:exported="false" />

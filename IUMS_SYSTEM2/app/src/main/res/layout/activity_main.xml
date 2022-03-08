@@ -5,6 +5,34 @@
     android:background="@color/austGreenBackground"
     >
 
+    <LinearLayout
+        android:id="@+id/TopRl"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/austGreenDark"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/bckbtn"
+            android:layout_gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_back_24"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/NoticeBoard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            android:gravity="center|left"
+            android:text="IUMS_SYSTEM"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
+
+    </LinearLayout>
+
     <ImageView
 
         android:id="@+id/img1"
@@ -24,10 +52,9 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center_horizontal"
         android:text="Welcome to IUMS "
-        android:textColor="@color/austGreenSlot1"
+        android:textColor="@color/austGreenDark"
         android:textSize="40dp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txt2"
@@ -37,7 +64,8 @@
         android:layout_marginTop="2dp"
         android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
-        android:text="(Department of Computer Science and Engineering)"
+        android:background="@color/austGreenDark"
+        android:text="AHSANULLAH UNIVERSITY OF SCIENCE AND TECHNOLOGY"
         android:textColor="@color/austGreenSlot2"
         android:textSize="17dp"
         android:textStyle="bold" />
@@ -51,7 +79,7 @@
         android:fontFamily="serif"
         android:text='Click "Next" to continue'
         android:textAlignment="center"
-        android:textColor="@color/austGreenSlot1"
+        android:textColor="@color/austGreenDark"
         android:textSize="25dp" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -64,6 +92,7 @@
         android:background="@drawable/buttonbavel"
         android:fontFamily="serif"
         android:text="NEXT"
+        android:textColor="@color/austGreenDark"
         android:textAlignment="center"
         android:textSize="25dp"
         android:textStyle="bold" />

@@ -53,12 +53,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation platform('com.google.firebase:firebase-bom:29.0.4')
     implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.squareup.picasso:picasso:2.71828'
 
-    //profilehungabunga
+
+    //profilehungabung
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     implementation 'com.google.android.material:material:version'
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
 }

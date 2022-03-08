@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.example.iums_system.R
 import org.w3c.dom.Text
@@ -28,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initialize()
 
+        supportActionBar?.hide()
+        var btn = findViewById<ImageButton>(R.id.bckbtn)
+        btn.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     override fun onStart() {

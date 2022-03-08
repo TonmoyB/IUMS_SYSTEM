@@ -7,20 +7,13 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.iums_system.R
-import com.example.iums_system.databinding.ActivitySprofileEditInfoBinding
-import com.example.iums_system.databinding.ActivityStudentUserProfileBinding
+
 import com.example.iums_system.misc.AdminStudentActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -36,96 +29,84 @@ import java.util.zip.Inflater
 class StudentUserProfileActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
-
-    private lateinit var binding: ActivityStudentUserProfileBinding
-    private lateinit var fname: String
-    private lateinit var extraID: String
-    private lateinit var id: TextView
-
-    private var firebaseStorage: FirebaseStorage?=null
+    private lateinit var UID:String
     private var storageReference: StorageReference?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_user_profile)
 
-        database = Firebase.database.reference
-        auth = Firebase.auth
-        binding = ActivityStudentUserProfileBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        id = findViewById(R.id.sid)
+        initialization()
+        getProfileData()
+        setImage()
 
-        //----Data_Show---
+        supportActionBar?.hide()
+        var btn = findViewById<ImageButton>(R.id.bckbtn)
+        btn.setOnClickListener {
+            onBackPressed()
+        }
+
+    }
+
+    private fun getProfileData() {
         val curr = auth.currentUser
-        if(curr !=null) {
-            val tempID = curr.uid
-            database.child ("users").child (tempID).addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for(postSnapshot in dataSnapshot.children) {
-                        val key = postSnapshot.key
-                        val data = postSnapshot.value
-                        var temp = ""
+        //currUser = curr
+        if(curr !=null)
+        {
+            UID = curr.uid
+        }
 
-                        when (key) {
-                            "sname" -> {
-                                temp = ""
-                                temp += binding.sname.text.toString()
-                                temp += data.toString()
-                                binding.sname.text = temp
-                            }
-                            "sid" -> {
-                                temp = ""
-                                temp += id.text as String
-                                temp += data.toString()
-                                id.text = temp
-                            }
-                            "smail" -> {
-                                temp = ""
-                                temp += binding.smail.text.toString()
-                                temp += data.toString()
-                                binding.smail.text = temp
-                            }
-                            "sdept" -> {
-                                temp = ""
-                                temp += binding.sdept.text.toString()
-                                temp += data.toString()
-                                binding.sdept.text = temp
-                            }
-                            "ssemester" -> {
-                                temp = ""
-                                temp += binding.ssemester.text.toString()
-                                temp += data.toString()
-                                binding.ssemester.text = temp
-                            }
-                            "syear" -> {
-                                temp = ""
-                                temp += binding.syear.text.toString()
-                                temp += data.toString()
-                                binding.syear.text = temp
-                            }
-                        }
-                    }
+        val ref = FirebaseDatabase.getInstance().getReference("users")
+        ref.child(UID)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    //getbookURL
+                    var ID =        snapshot.child("sid").value
+                    var NAME =      snapshot.child("sname").value
+                    var EMAIL =     snapshot.child("smail").value
+                    var DEPT =      snapshot.child("sdept").value
+                    var SEMESTER =  snapshot.child("ssemester").value
+                    var YEAR =      snapshot.child("syear").value
+                    var ADMITTED_YEAR = "$SEMESTER" + " " + "$YEAR"
+                    var YEARSEMESTER = snapshot.child("syearSemester").value
+
+                   var TV_NAME = findViewById<TextView>(R.id.sname)
+                   var TV_ID = findViewById<TextView>(R.id.sid)
+                   var TV_EMAIL = findViewById<TextView>(R.id.smail)
+                   var TV_DEPT = findViewById<TextView>(R.id.sdept)
+                   var TV_ADMITTED_SESSION = findViewById<TextView>(R.id.admitted_session)
+                   var TV_YEARSEMESTER = findViewById<TextView>(R.id.yearSemester)
+
+                    TV_NAME.text = "$NAME"
+                    TV_ID.text = "$ID"
+                    TV_EMAIL.text = "$EMAIL"
+                    TV_DEPT.text = "$DEPT"
+                    TV_ADMITTED_SESSION.text = "$ADMITTED_YEAR"
+                    TV_YEARSEMESTER.text = "$YEARSEMESTER"
+
                 }
-
-                override fun onCancelled(databaseError: DatabaseError) {
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
                 }
             })
-        }
+    }
+
+    private fun setImage() {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Fetching...")
         progressDialog.setCancelable(false)
         progressDialog.show()
 
         storageReference = Firebase.storage.reference
+        val spic = findViewById<ImageView>(R.id.spic)
 
-        val fname = intent.getStringExtra("message")
-        Toast.makeText(this, fname, Toast.LENGTH_LONG).show()
-        storageReference!!.child("images/${fname}"!!)
+        val id = intent.getStringExtra("message")
+        storageReference!!.child("images/${id}"!!)
             .downloadUrl.addOnSuccessListener {uri->
                 if(progressDialog.isShowing)
                     progressDialog.dismiss()
 
-                Picasso.get().load(uri).into(binding.spic)
+                Picasso.get().load(uri).into(spic)
                 Toast.makeText(this, "Image Fetched Successfully!", Toast.LENGTH_SHORT).show()
 
             }.addOnFailureListener{
@@ -133,13 +114,17 @@ class StudentUserProfileActivity : AppCompatActivity() {
                 if(progressDialog.isShowing)
                     progressDialog.dismiss()
 
-                Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "No Image Found!", Toast.LENGTH_SHORT).show()
             }
+    }
+
+
+
+    private fun initialization() {
+        database = Firebase.database.reference
+        auth = Firebase.auth
+
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        Toast.makeText(this, id.text.toString(), Toast.LENGTH_LONG).show()
-    }
 }

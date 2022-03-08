@@ -1,21 +1,23 @@
-package com.example.iums_system.AdminPart
+package com.example.iums_system.StudentPart
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.example.iums_system.AdminPart.AdminProfileNoticeDetailActivity
+import com.example.iums_system.AdminPart.Constants
 import com.example.iums_system.R
-import com.example.iums_system.databinding.ActivityAdminProfileNoticeDetailBinding
+import com.example.iums_system.databinding.ActivityStudentProfileViewNoticeBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 
-class AdminProfileNoticeDetailActivity : AppCompatActivity() {
+class StudentProfileViewNoticeActivity : AppCompatActivity() {
 
     //view binding
-    private lateinit var binding:ActivityAdminProfileNoticeDetailBinding
+    private lateinit var binding: ActivityStudentProfileViewNoticeBinding
 
     //book id
     var bookId = ""
@@ -27,7 +29,7 @@ class AdminProfileNoticeDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityAdminProfileNoticeDetailBinding.inflate(layoutInflater)
+        binding = ActivityStudentProfileViewNoticeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //get bookId from previous intent using putExtra
@@ -38,7 +40,6 @@ class AdminProfileNoticeDetailActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        //
     }
 
     private fun loadBook() {
@@ -69,7 +70,7 @@ class AdminProfileNoticeDetailActivity : AppCompatActivity() {
             })
     }
 
-    private fun showBook(pdfUrl:String) {
+    private fun showBook(pdfUrl: String) {
         Log.d(TAG,"LoadBookFromUrl: Get pdf from firebase storage using URL")
 
         val reference = FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
@@ -99,4 +100,5 @@ class AdminProfileNoticeDetailActivity : AppCompatActivity() {
                 binding.progressBarr.visibility = View.GONE
             }
     }
+
 }

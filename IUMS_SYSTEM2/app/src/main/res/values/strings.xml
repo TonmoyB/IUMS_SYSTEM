@@ -4,6 +4,21 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
 
+    <string-array name="year_semester">
+        <item>Year/Semester</item>
+        <item>1/1</item>
+        <item>1/2</item>
+        <item>2/1</item>
+        <item>2/2</item>
+        <item>3/1</item>
+        <item>3/2</item>
+        <item>4/1</item>
+        <item>4/2</item>
+        <item>5/1 [ARCH only]</item>
+        <item>5/2 [ARCH only]</item>
+
+    </string-array>
+
     <!--for Login/Signup part-->
     <string name="no_account"><u>Not have account? Click here to <b>SignUp</b></u> </string>
     <string name="yes_account"><u>Already have account? Click here to <b>Sign In</b></u></string>

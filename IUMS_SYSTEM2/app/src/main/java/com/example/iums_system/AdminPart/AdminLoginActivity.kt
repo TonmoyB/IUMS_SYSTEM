@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.iums_system.R
 import com.example.iums_system.misc.AdminStudentActivity
 //import com.example.iums_system.StudentPart.StudentProfileActivity
@@ -41,6 +38,12 @@ class AdminLoginActivity : AppCompatActivity() {
         //checkForLogin()
         intro_animation()
         checkIfButtonPressed()
+
+        supportActionBar?.hide()
+        var btn = findViewById<ImageButton>(R.id.bckbtn)
+        btn.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     override fun onStart() {
@@ -118,6 +121,7 @@ class AdminLoginActivity : AppCompatActivity() {
                     //code for logging in user
                         Toast.makeText(this, "Credentials matched!",Toast.LENGTH_LONG).show()
                     val intent = Intent( this@AdminLoginActivity, AdminProfileActivity::class.java)
+                    intent.putExtra("adminID",AdminID)
                     startActivity(intent)
                 }
                 else{

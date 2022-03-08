@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/austGreenBackground">
+
+    <LinearLayout
+        android:id="@+id/TopRl"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/austGreenDark"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/bckbtn"
+            android:layout_gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_back_24"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/NoticeBoard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            android:gravity="center|left"
+            android:text="IUMS_SYSTEM"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txt1"
@@ -12,11 +41,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="Update Informations"
+        android:text="Update Information"
         android:gravity="center"
         android:paddingTop="20dp"
         android:layout_alignParentTop="true"
-        android:textColor="@color/austGreenSlot1"
+        android:textColor="@color/austGreenDark"
         android:textStyle="bold"
 
         />
@@ -51,15 +80,17 @@
             android:id="@+id/idTil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp">
+            android:paddingBottom="5dp"
+            android:inputType="none">
 
             <EditText
                 android:id="@+id/idEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/austGreenSlot4"
+                android:background="@color/light_red"
                 android:hint="Student ID"
-                android:inputType="number" />
+                android:inputType="none"
+                android:focusable="false" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,15 +99,17 @@
             android:id="@+id/emailTil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp">
+            android:paddingBottom="5dp"
+            android:inputType="none">
 
             <EditText
                 android:id="@+id/emailEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/austGreenSlot4"
+                android:background="@color/light_red"
                 android:hint="E-mail"
-                android:inputType="textEmailAddress" />
+                android:inputType="none"
+                android:focusable="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,7 +142,7 @@
             android:gravity="center"
             android:paddingTop="20dp"
             android:layout_alignParentTop="true"
-            android:textColor="@color/austGreenSlot1"
+            android:textColor="@color/austGreenDark"
             android:textStyle="bold"
 
             />
@@ -120,7 +153,11 @@
             android:layout_height="60dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:text="Select" />
+            android:text="Select"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/austGreenSlot3"
+            android:layout_marginTop="15dp"/>
 
         <!--Update button-->
         <androidx.appcompat.widget.AppCompatButton
@@ -130,11 +167,12 @@
             android:background="@color/austGreenSlot3"
             android:layout_gravity="center"
             android:fontFamily="serif"
-            android:text="Update!"
+            android:text="Update"
             android:textAlignment="center"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

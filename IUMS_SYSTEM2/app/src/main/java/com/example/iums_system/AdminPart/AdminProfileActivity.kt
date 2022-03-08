@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.iums_system.R
 import com.example.iums_system.StudentPart.StudentLogin
+import com.example.iums_system.misc.AboutUsAcitivity
 import com.example.iums_system.misc.users
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -33,7 +34,7 @@ class AdminProfileActivity : AppCompatActivity() {
     private lateinit var Name: TextView
     private lateinit var sample_student_name: TextView
 
-    private lateinit var studentName: String
+    private lateinit var aID: String
 
     private lateinit var navView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
@@ -43,6 +44,8 @@ class AdminProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_profile)
 
+        aID = intent.getStringExtra("adminID")!!
+
         init()
         drawer()
     }
@@ -50,7 +53,7 @@ class AdminProfileActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        updateData()
+
     }
     override fun onBackPressed() {
         val builder = AlertDialog.Builder(this)
@@ -83,26 +86,8 @@ class AdminProfileActivity : AppCompatActivity() {
         navView = findViewById(R.id.nav_viewAD)
         drawerLayout = findViewById(R.id.drawerLayoutAD)
         currUser = auth.currentUser
-    }
-    private fun updateData(){
-        val curr = auth.currentUser
-        //currUser = curr
-        if(curr !=null)
-        {
-            val tempID = curr.uid
 
-            database.child("users").child(tempID).child("sname").get().addOnSuccessListener {
-                Name.text = (it.value as CharSequence?)
-                //sample_student_name.text = (it.value as CharSequence?)
-                Toast.makeText(this,"Data Fetched", Toast.LENGTH_LONG).show()
-            }
-        }
-        else
-        {
-            Toast.makeText(this,"not ok", Toast.LENGTH_LONG).show()
-            val intent = Intent( this@AdminProfileActivity, AdminLoginActivity::class.java)
-            startActivity(intent)
-        }
+        Name.text = Name.text.toString() + "$aID"
     }
 
     private fun drawer(){
@@ -123,10 +108,8 @@ class AdminProfileActivity : AppCompatActivity() {
                     logout()
                 }
 
-
-
                 R.id.ad_notice_view -> {
-                    Toast.makeText(applicationContext, "Clicked View Notice", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(applicationContext, "Clicked View Notice", Toast.LENGTH_SHORT).show()
                     val intent = Intent( this@AdminProfileActivity, AdminProfileViewNoticeActivity::class.java)
                     startActivity(intent)
                 }
@@ -136,14 +119,10 @@ class AdminProfileActivity : AppCompatActivity() {
 
                 }
 
-                R.id.ad_FAQ -> {
-                    Toast.makeText(applicationContext, "Clicked FAQ", Toast.LENGTH_SHORT).show()
+                R.id.aboutUS -> {
+                    val intent = Intent( this@AdminProfileActivity, AboutUsAcitivity::class.java)
+                    startActivity(intent)
                 }
-
-
-
-                R.id.sample_student -> Toast.makeText(applicationContext,"Clicked Name", Toast.LENGTH_SHORT).show()
-
             }
             true
         }
@@ -155,7 +134,7 @@ class AdminProfileActivity : AppCompatActivity() {
         if(curr!=null)
         {
             auth.signOut()
-            val intent = Intent( this@AdminProfileActivity, StudentLogin::class.java)
+            val intent = Intent( this@AdminProfileActivity, AdminLoginActivity::class.java)
             startActivity(intent)
         }
     }
